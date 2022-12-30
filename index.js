@@ -18,7 +18,7 @@ fastify.get('/lk21/search', async (request, reply) => {
 })
 
 fastify.get('/lk21/latest', async (request, reply) => {
- const result = await lk21Latest()
+ const result = await lk21Latest(request.query.tmdb)
   return result
 })
 
