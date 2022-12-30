@@ -1,5 +1,7 @@
-// CommonJs
-const fastify = require('fastify')({
+
+import { lk21Popular, lk21Search, lk21Latest } from './lib/lk21.js'
+import Fastify from 'fastify'
+const fastify = Fastify({
   logger: true
 })
 
@@ -8,10 +10,23 @@ fastify.get('/', async (request, reply) => {
   return { hello: 'world' }
 })
 fastify.get('/lk21/search', async (request, reply) => {
- console.log(request.query)
- request.log.info('some info')
-  return { query : request.query}
+ const query = request.query.id
+ const tmdb = request.query.tmdb
+ //request.log.info('some info')
+ const result = await lk21Search(query, tmdb)
+  return result
 })
+
+fastify.get('/lk21/latest', async (request, reply) => {
+ const result = await lk21Latest()
+  return result
+})
+
+fastify.get('/lk21/popular', async (request, reply) => {
+ const result = await lk21Popular(request.query.tmdb ?request.query.tmdb: null )
+  return result
+})
+
 
 fastify.get('/users/:id', (request, reply) => {
   // Mengambil nilai parameter id

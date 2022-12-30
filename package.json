@@ -3,18 +3,22 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "engines": {
-   "node" : "18.x"
+    "node": "18.x"
   },
   "scripts": {
-   "start" : "node index.js",
-   "dev" : "nodemon index.js",
+    "start": "node index.js",
+    "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "fastify": "^4.10.2"
+    "axios": "^1.2.2",
+    "cheerio": "^1.0.0-rc.12",
+    "fastify": "^4.10.2",
+    "node-cache": "^5.1.2"
   }
 }
